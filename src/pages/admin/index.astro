@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/Layout.astro'
+---
+
+<Layout title=''>
+  <h1 class='mb-4 font-bold border-b'>Home</h1>
+  {
+    Astro.locals.user ? (
+      <>
+        <h1>
+          Welcome to <span class='text-gradient'>Astro</span>,{' '}
+          {Astro.locals.user.id}
+        </h1>
+        <form method='post' action='/api/logout'>
+          <input
+            type='submit'
+            class='mt-10 px-3 py-1 border-2 border-gray-700 cursor-pointer'
+            value='Logout'
+          />
+        </form>
+      </>
+    ) : (
+      <a class='underline' href='/admin/login'>
+        Login
+      </a>
+    )
+  }
+</Layout>
